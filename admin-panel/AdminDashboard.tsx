@@ -384,7 +384,7 @@ export default function AdminDashboard() {
           </div>
         </header>
 
-        {loading ? <div className={styles.loading}>Loading data...</div> : renderContent()}
+        {loading ? <div className={styles.loading} /> : renderContent()}
       </main>
 
       {/* Sidebar Overlay for Mobile */}

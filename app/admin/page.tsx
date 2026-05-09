@@ -14,25 +14,16 @@ export default function AdminPage() {
   }, []);
 
   const handleLogin = () => {
-    // This will now be handled by real Supabase Auth in the AdminLogin component
-    window.location.reload(); 
+    // AuthContext will automatically update and trigger re-render
   };
 
   // Avoid hydration mismatch by waiting for mount
-  if (!isMounted) {
+  if (!isMounted || loading) {
     return (
       <div style={{ 
         height: '100vh', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
         background: '#0a0a0b',
-        color: '#c4a163',
-        fontSize: '1.2rem',
-        fontFamily: 'Inter, sans-serif'
-      }}>
-        Initializing Admin Portal...
-      </div>
+      }} />
     );
   }
 
