@@ -1,0 +1,153 @@
+.page {
+  padding-bottom: 100px;
+}
+
+.hero {
+  background: var(--primary-gradient);
+  padding: 150px 0 100px;
+  color: white;
+  text-align: center;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: var(--weight-heading);
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 18px;
+  opacity: 0.9;
+  margin-bottom: 40px;
+}
+
+.searchWrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 20px;
+  color: var(--text-muted);
+}
+
+.searchInput {
+  width: 100%;
+  padding: 16px 20px 16px 56px;
+  border-radius: var(--radius-pill);
+  border: none;
+  font-size: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+  margin-top: -40px;
+  background: white;
+  border-radius: 40px;
+  padding: 64px 40px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  z-index: 2;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 64px;
+  flex-wrap: wrap;
+}
+
+.catBtn {
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  background: #f1f3f9;
+  color: var(--text-secondary);
+  font-weight: var(--weight-subheading);
+  transition: var(--transition);
+}
+
+.activeCat {
+  background: var(--primary-gradient);
+  color: white;
+  box-shadow: var(--shadow-button);
+}
+
+.faqList {
+  max-width: 800px;
+  margin: 0 auto 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faqItem {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.question {
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  font-size: 18px;
+  font-weight: var(--weight-subheading);
+  color: var(--text-primary);
+  background: white;
+}
+
+.open {
+  border-color: #667eea;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+}
+
+.answer {
+  padding: 0 24px 24px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.cta {
+  display: flex;
+  justify-content: center;
+}
+
+.ctaCard {
+  background: #f8f9ff;
+  padding: 48px;
+  border-radius: 32px;
+  text-align: center;
+  max-width: 500px;
+}
+
+.ctaCard svg {
+  color: #667eea;
+  margin-bottom: 24px;
+}
+
+.ctaCard h3 {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.ctaCard p {
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+}
+
+.contactBtn {
+  background: var(--primary-gradient);
+  color: white;
+  padding: 14px 40px;
+  border-radius: var(--radius-button);
+  font-weight: var(--weight-heading);
+}

@@ -1,0 +1,158 @@
+export interface Product {
+  id: string;
+  name: string;
+  price: number;
+  originalPrice?: number;
+  category: string;
+  image: string;
+  rating: number;
+  reviews: number;
+  discount?: number;
+  isNew?: boolean;
+}
+
+export const products: Product[] = [
+  {
+    id: '1',
+    name: 'Elite Chronograph Watch',
+    price: 45000,
+    originalPrice: 55000,
+    category: 'Electronics',
+    image: '/medias/product_img1.71b51935.png',
+    rating: 4.8,
+    reviews: 124,
+    discount: 18,
+    isNew: true,
+  },
+  {
+    id: '2',
+    name: 'Royal Velvet Sofa Set',
+    price: 85000,
+    originalPrice: 110000,
+    category: 'Home Decor',
+    image: '/medias/product_img2.a1c97737.png',
+    rating: 4.5,
+    reviews: 89,
+    discount: 22,
+  },
+  {
+    id: '3',
+    name: 'Pure Essence Perfume',
+    price: 8500,
+    originalPrice: 12000,
+    category: 'Beauty',
+    image: '/medias/product_img3.d7be473d.png',
+    rating: 4.9,
+    reviews: 215,
+    discount: 29,
+  },
+  {
+    id: '4',
+    name: 'Premium Leather Boots',
+    price: 12500,
+    originalPrice: 18000,
+    category: 'Fashion',
+    image: '/medias/product_img4.60bc85fd.png',
+    rating: 4.7,
+    reviews: 156,
+    discount: 30,
+  },
+  {
+    id: '5',
+    name: 'Signature Handbag',
+    price: 22000,
+    originalPrice: 28000,
+    category: 'Fashion',
+    image: '/medias/product_img5.dffbea33.png',
+    rating: 4.6,
+    reviews: 98,
+    discount: 21,
+    isNew: true,
+  },
+  {
+    id: '6',
+    name: 'Wireless ANC Headphones',
+    price: 15999,
+    originalPrice: 24999,
+    category: 'Electronics',
+    image: '/medias/product_img6.51b328b9.png',
+    rating: 4.8,
+    reviews: 342,
+    discount: 36,
+  },
+  {
+    id: '7',
+    name: 'Luxury Sunglasses',
+    price: 9500,
+    originalPrice: 14000,
+    category: 'Fashion',
+    image: '/medias/product_img7.0fe951c9.png',
+    rating: 4.4,
+    reviews: 67,
+    discount: 32,
+  },
+  {
+    id: '8',
+    name: 'Smart Fitness Band',
+    price: 6999,
+    originalPrice: 9999,
+    category: 'Electronics',
+    image: '/medias/product_img8.db630d17.png',
+    rating: 4.3,
+    reviews: 201,
+    discount: 30,
+    isNew: true,
+  },
+  {
+    id: '9',
+    name: 'Designer Sneakers',
+    price: 18500,
+    originalPrice: 25000,
+    category: 'Fashion',
+    image: '/medias/product_img9.4a473750.png',
+    rating: 4.7,
+    reviews: 178,
+    discount: 26,
+  },
+  {
+    id: '10',
+    name: 'Artisan Coffee Machine',
+    price: 32000,
+    originalPrice: 42000,
+    category: 'Home Decor',
+    image: '/medias/product_img10.019edc7f.png',
+    rating: 4.6,
+    reviews: 134,
+    discount: 24,
+  },
+  {
+    id: '11',
+    name: 'Premium Skincare Set',
+    price: 5999,
+    originalPrice: 8999,
+    category: 'Beauty',
+    image: '/medias/product_img11.db745a27.png',
+    rating: 4.9,
+    reviews: 289,
+    discount: 33,
+    isNew: true,
+  },
+  {
+    id: '12',
+    name: 'Luxury Backpack',
+    price: 14500,
+    originalPrice: 19500,
+    category: 'Fashion',
+    image: '/medias/product_img12.bf22f7ab.png',
+    rating: 4.5,
+    reviews: 112,
+    discount: 26,
+  },
+];
+
+export const categories = [
+  { name: 'Fashion', icon: 'ShoppingBag', count: '1.2k+', image: '/medias/product_img4.60bc85fd.png' },
+  { name: 'Electronics', icon: 'Smartphone', count: '800+', image: '/medias/product_img1.71b51935.png' },
+  { name: 'Home Decor', icon: 'Home', count: '600+', image: '/medias/product_img2.a1c97737.png' },
+  { name: 'Beauty', icon: 'Sparkles', count: '450+', image: '/medias/product_img3.d7be473d.png' },
+];

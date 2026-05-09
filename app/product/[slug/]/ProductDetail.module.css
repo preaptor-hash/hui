@@ -1,0 +1,399 @@
+.page {
+  padding-top: 120px;
+  padding-bottom: 100px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  margin-bottom: 100px;
+}
+
+@media (max-width: 1024px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mainImageWrapper {
+  width: 100%;
+  height: 600px;
+  background: white;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.thumbnails {
+  display: flex;
+  gap: 16px;
+}
+
+.thumbBtn {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: var(--transition);
+  background: white;
+}
+
+.thumbBtn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.activeThumb {
+  border-color: #667eea;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: var(--weight-heading);
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.ratingRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.reviews {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.writeReview {
+  font-size: 14px;
+  color: #667eea;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.priceBlock {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.price {
+  font-size: 36px;
+  font-weight: var(--weight-heading);
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.originalPrice {
+  font-size: 20px;
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.savingsBadge {
+  background: var(--success-gradient);
+  color: white;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: var(--weight-heading);
+}
+
+.shortDesc {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  font-size: 16px;
+}
+
+.variants {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.variantGroup label {
+  display: block;
+  font-weight: var(--weight-subheading);
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.variantGroup label span {
+  font-weight: var(--weight-body);
+  color: var(--text-muted);
+}
+
+.colorOptions {
+  display: flex;
+  gap: 12px;
+}
+
+.colorCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+}
+
+.activeColor {
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px white inset;
+}
+
+.sizeOptions {
+  display: flex;
+  gap: 12px;
+}
+
+.sizePill {
+  min-width: 48px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-weight: var(--weight-subheading);
+  background: white;
+}
+
+.activeSize {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+}
+
+.stockStatus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  font-size: 14px;
+  color: #11998e;
+}
+
+.stockDot {
+  width: 8px;
+  height: 8px;
+  background: #38ef7d;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #38ef7d;
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.quantityStepper {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-button);
+  background: white;
+}
+
+.quantityStepper button {
+  padding: 12px 16px;
+}
+
+.quantityStepper span {
+  width: 40px;
+  text-align: center;
+  font-weight: var(--weight-heading);
+}
+
+.addToCartBtn {
+  flex: 1;
+  background: var(--primary-gradient);
+  color: white;
+  border-radius: var(--radius-button);
+  font-weight: var(--weight-heading);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.buyNowBtn {
+  width: 100%;
+  background: #1a1a2e;
+  color: white;
+  padding: 16px;
+  border-radius: var(--radius-button);
+  font-weight: var(--weight-heading);
+  margin-bottom: 24px;
+}
+
+.extraActions {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.extraActions button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.deliveryInfo {
+  background: #f8f9ff;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.tabsSection {
+  border-top: 1px solid var(--border);
+  padding-top: 64px;
+  margin-bottom: 100px;
+}
+
+.tabBar {
+  display: flex;
+  gap: 40px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+
+.tabBtn {
+  padding-bottom: 16px;
+  font-size: 18px;
+  font-weight: var(--weight-subheading);
+  color: var(--text-muted);
+  position: relative;
+}
+
+.activeTab {
+  color: var(--text-primary);
+}
+
+.activeTab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary-gradient);
+}
+
+.tabContent {
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.descriptionTab h3 {
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.descriptionTab ul {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.descriptionTab li {
+  position: relative;
+  padding-left: 24px;
+}
+
+.descriptionTab li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  background: #667eea;
+  border-radius: 50%;
+}
+
+.relatedSection {
+  margin-top: 100px;
+}
+
+.sectionTitle {
+  font-size: 28px;
+  font-weight: var(--weight-heading);
+  margin-bottom: 40px;
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+@media (max-width: 768px) {
+  .relatedGrid {
+    grid-template-columns: 1fr;
+  }
+}

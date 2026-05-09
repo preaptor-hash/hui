@@ -1,0 +1,61 @@
+.toast {
+  position: relative;
+  background: white;
+  padding: 16px 24px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  min-width: 300px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message {
+  flex: 1;
+  font-size: 14px;
+  font-weight: var(--weight-subheading);
+  color: var(--text-primary);
+}
+
+.closeBtn {
+  color: var(--text-muted);
+}
+
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+}
+
+.success {
+  border-left: 4px solid #38ef7d;
+}
+.success .icon { color: #38ef7d; }
+.success .progressBar { background: var(--success-gradient); }
+
+.error {
+  border-left: 4px solid #eb3349;
+}
+.error .icon { color: #eb3349; }
+.error .progressBar { background: var(--danger-gradient); }
+
+.info {
+  border-left: 4px solid #4facfe;
+}
+.info .icon { color: #4facfe; }
+.info .progressBar { background: var(--accent-gradient); }
+
+.warning {
+  border-left: 4px solid #f7971e;
+}
+.warning .icon { color: #f7971e; }
+.warning .progressBar { background: var(--gold-gradient); }
