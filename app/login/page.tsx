@@ -1,13 +1,43 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { Chrome, Facebook } from '@/components/ui/BrandIcons';
 import styles from './Auth.module.css';
+import { supabase } from '@/lib/supabase';
 
 const LoginPage = () => {
-  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+
+    try {
+      const { data, error: signInError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+
+      if (signInError) throw signInError;
+
+      // Force a hard refresh to re-evaluate the auth context in the root layout properly,
+      // or redirect to account page
+      window.location.href = '/account';
+      
+    } catch (err: any) {
+      setError(err.message || 'Failed to login');
+      setLoading(false);
+    }
+  };
 
   return (
     <div className={styles.page}>
@@ -34,21 +64,33 @@ const LoginPage = () => {
               <p className={styles.subtitle}>Enter your credentials to access your account</p>
             </div>
 
+            {error && (
+              <div style={{ backgroundColor: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', padding: '12px', borderRadius: '8px', marginBottom: '16px', fontSize: '0.9rem' }}>
+                {error}
+              </div>
+            )}
+
             <div className={styles.socialBtns}>
-              <button className={styles.socialBtn}><Chrome size={18} /> Google</button>
-              <button className={styles.socialBtn}><Facebook size={18} /> Facebook</button>
+              <button className={styles.socialBtn} type="button"><Chrome size={18} /> Google</button>
+              <button className={styles.socialBtn} type="button"><Facebook size={18} /> Facebook</button>
             </div>
 
             <div className={styles.divider}>
               <span>OR</span>
             </div>
 
-            <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+            <form className={styles.form} onSubmit={handleLogin}>
               <div className={styles.inputGroup}>
                 <label>Email Address</label>
                 <div className={styles.inputWrapper}>
                   <Mail size={18} className={styles.icon} />
-                  <input type="email" placeholder="email@example.com" required />
+                  <input 
+                    type="email" 
+                    placeholder="email@example.com" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required 
+                  />
                 </div>
               </div>
 
@@ -62,6 +104,8 @@ const LoginPage = () => {
                   <input 
                     type={showPassword ? "text" : "password"} 
                     placeholder="••••••••" 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     required 
                   />
                   <button 
@@ -81,7 +125,9 @@ const LoginPage = () => {
                 </label>
               </div>
 
-              <button type="submit" className={styles.submitBtn}>Login to Account</button>
+              <button type="submit" className={styles.submitBtn} disabled={loading}>
+                {loading ? 'Authenticating...' : 'Login to Account'}
+              </button>
             </form>
 
             <p className={styles.footerText}>

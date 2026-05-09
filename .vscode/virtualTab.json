@@ -92,7 +92,11 @@
       "components/layout/Footer.module.css",
       "components/layout/Footer.tsx",
       "components/layout/Navbar.module.css",
-      "components/layout/Navbar.tsx"
+      "components/layout/Navbar.tsx",
+      "components/sections/NewsletterSection.module.css",
+      "components/sections/NewsletterSection.tsx",
+      "components/sections/FeaturedProducts.module.css",
+      "components/sections/FeaturedProducts.tsx"
     ],
     "builtIn": true,
     "bookmarks": {}
