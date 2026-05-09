@@ -2,11 +2,18 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, ChevronDown, Plus, Minus } from 'lucide-react';
 import { Facebook, Twitter, Instagram, Youtube } from '@/components/ui/BrandIcons';
 import styles from './Footer.module.css';
 
 const Footer = () => {
+  const [openSection, setOpenSection] = React.useState<string | null>(null);
+
+  const toggleSection = (section: string) => {
+    if (window.innerWidth <= 640) {
+      setOpenSection(openSection === section ? null : section);
+    }
+  };
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.container}`}>
@@ -29,8 +36,13 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className={styles.linksCol}>
-            <h4 className={styles.colTitle}>Company</h4>
+          <div className={`${styles.linksCol} ${openSection === 'company' ? styles.colOpen : ''}`}>
+            <h4 className={styles.colTitle} onClick={() => toggleSection('company')}>
+              Company
+              <span className={styles.toggleIcon}>
+                {openSection === 'company' ? <Minus size={16} /> : <Plus size={16} />}
+              </span>
+            </h4>
             <ul className={styles.linksList}>
               <li><Link href="/about">Our Story</Link></li>
               <li><Link href="/shop">Luxury Shop</Link></li>
@@ -39,8 +51,13 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className={styles.linksCol}>
-            <h4 className={styles.colTitle}>Collections</h4>
+          <div className={`${styles.linksCol} ${openSection === 'collections' ? styles.colOpen : ''}`}>
+            <h4 className={styles.colTitle} onClick={() => toggleSection('collections')}>
+              Collections
+              <span className={styles.toggleIcon}>
+                {openSection === 'collections' ? <Minus size={16} /> : <Plus size={16} />}
+              </span>
+            </h4>
             <ul className={styles.linksList}>
               <li><Link href="/shop/fashion">Fashion House</Link></li>
               <li><Link href="/shop/electronics">Tech Elite</Link></li>

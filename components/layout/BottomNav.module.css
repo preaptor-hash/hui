@@ -10,12 +10,15 @@
   -webkit-backdrop-filter: blur(10px);
   border-top: 1px solid var(--border-light);
   z-index: 1000;
-  padding: 0 16px;
+  padding: 0 4px; /* Reduced padding to fit 4 items */
   box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.05);
+  justify-content: space-around;
+  align-items: stretch;
 }
 
 .navItem {
   flex: 1;
+  min-width: 0; /* Allow items to shrink */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,13 +26,19 @@
   gap: 4px;
   color: var(--text-muted);
   transition: var(--transition);
+  padding: 8px 0;
 }
 
 .navItem span {
   font-size: 10px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.2px; /* Reduced letter spacing */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: center;
 }
 
 .navItem:hover {
