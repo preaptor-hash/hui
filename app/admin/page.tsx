@@ -6,7 +6,7 @@ import AdminLogin from '@/admin-panel/AdminLogin';
 import { useAuth } from '@/lib/AuthContext';
 
 export default function AdminPage() {
-  const { isAdmin, loading } = useAuth();
+  const { user, isAdmin, loading } = useAuth();
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
