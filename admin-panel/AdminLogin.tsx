@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
-import styles from './AdminPanel.module.css';
+import { supabase } from '../lib/supabase';
 
 interface AdminLoginProps {
   onLogin: () => void;
@@ -11,14 +10,44 @@ export default function AdminLogin({ onLogin }: AdminLoginProps) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === 'admin' && password === 'pointLESS123') {
-      onLogin();
+    setLoading(true);
+    setError('');
+
+    // Try Supabase Auth
+    const { data, error: authError } = await supabase.auth.signInWithPassword({
+      email: username.includes('@') ? username : `${username}@indicaluxe.com`,
+      password: password,
+    });
+
+    if (authError) {
+      // Fallback for demo credentials if strictly requested, 
+      // but we should favor real DB users for RBAC
+      if (username === 'admin' && password === 'pointLESS123') {
+        window.sessionStorage.setItem('admin_auth', 'true');
+        onLogin();
+      } else {
+        setError(authError.message);
+      }
     } else {
-      setError('Invalid credentials. Access denied.');
+      // Check if user is admin
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('role')
+        .eq('id', data.user.id)
+        .single();
+
+      if (profile?.role === 'admin') {
+        onLogin();
+      } else {
+        setError('Access denied: You do not have administrator privileges.');
+        await supabase.auth.signOut();
+      }
     }
+    setLoading(false);
   };
 
   return (

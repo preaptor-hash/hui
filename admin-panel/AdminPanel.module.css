@@ -488,6 +488,22 @@
     display: block;
   }
 }
+.notifyBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.notifyBtn:hover {
+  background: rgba(196, 161, 99, 0.1);
+  border-color: var(--primary);
+  transform: scale(1.1);
+}
 
 .saveBtn {
   background: var(--primary);

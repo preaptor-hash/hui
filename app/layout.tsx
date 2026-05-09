@@ -25,6 +25,8 @@ export const metadata: Metadata = {
 };
 
 import { CartProvider } from "@/lib/CartContext";
+import { AuthProvider } from "@/lib/AuthContext";
+import { NotificationProvider } from "@/lib/NotificationContext";
 
 export default function RootLayout({
   children,
@@ -34,15 +36,19 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <body>
-        <CartProvider>
-          <Navbar />
-          <main>
-            {children}
-            <TrustBar />
-          </main>
-          <BottomNav />
-          <Footer />
-        </CartProvider>
+        <AuthProvider>
+          <NotificationProvider>
+            <CartProvider>
+              <Navbar />
+              <main>
+                {children}
+                <TrustBar />
+              </main>
+              <BottomNav />
+              <Footer />
+            </CartProvider>
+          </NotificationProvider>
+        </AuthProvider>
       </body>
     </html>
   );

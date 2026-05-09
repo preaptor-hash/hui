@@ -2,14 +2,18 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Search, Heart, ShoppingCart, User, Menu, X } from 'lucide-react';
+import { Search, Heart, ShoppingCart, User, Menu, X, Bell } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Navbar.module.css';
 
 import { useCart } from '@/lib/CartContext';
+import { useNotifications } from '@/lib/NotificationContext';
+import { useAuth } from '@/lib/AuthContext';
 
 const Navbar = () => {
   const { totalItems } = useCart();
+  const { unreadCount } = useNotifications();
+  const { user } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -115,6 +119,10 @@ const Navbar = () => {
             <Link href="/wishlist" className={`${styles.iconBtn} ${styles.desktopOnly}`} aria-label="Wishlist">
               <Heart size={20} />
               <span className={styles.badge}>0</span>
+            </Link>
+            <Link href="/notifications" className={styles.iconBtn} aria-label="Notifications">
+              <Bell size={20} />
+              {unreadCount > 0 && <span className={styles.badge}>{unreadCount}</span>}
             </Link>
             <Link href="/cart" className={styles.iconBtn} aria-label="Cart">
               <ShoppingCart size={20} />

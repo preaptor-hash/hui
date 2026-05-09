@@ -3,23 +3,19 @@
 import React, { useState, useEffect } from 'react';
 import AdminDashboard from '@/admin-panel/AdminDashboard';
 import AdminLogin from '@/admin-panel/AdminLogin';
+import { useAuth } from '@/lib/AuthContext';
 
 export default function AdminPage() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { isAdmin, loading } = useAuth();
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    // Only run on client after mounting to avoid hydration mismatch
-    const authStatus = window.sessionStorage.getItem('admin_auth');
-    if (authStatus === 'true') {
-      setIsAuthenticated(true);
-    }
     setIsMounted(true);
   }, []);
 
   const handleLogin = () => {
-    setIsAuthenticated(true);
-    window.sessionStorage.setItem('admin_auth', 'true');
+    // This will now be handled by real Supabase Auth in the AdminLogin component
+    window.location.reload(); 
   };
 
   // Avoid hydration mismatch by waiting for mount
@@ -40,7 +36,7 @@ export default function AdminPage() {
     );
   }
 
-  if (!isAuthenticated) {
+  if (!user || !isAdmin) {
     return <AdminLogin onLogin={handleLogin} />;
   }
 

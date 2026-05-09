@@ -28,6 +28,7 @@ interface Order {
   customer_name: string;
   status: string;
   total_amount: number;
+  user_id: string;
   created_at: string;
 }
 
@@ -222,7 +223,8 @@ export default function AdminDashboard() {
                   <th>Customer</th>
                   <th>Status</th>
                   <th>Total</th>
-                  <th>Action</th>
+                  <th>Status Action</th>
+                  <th>Notify</th>
                 </tr>
               </thead>
               <tbody>
@@ -246,6 +248,25 @@ export default function AdminDashboard() {
                         <option value="delivered">Delivered</option>
                         <option value="cancelled">Cancelled</option>
                       </select>
+                    </td>
+                    <td>
+                      <button 
+                        className={styles.notifyBtn}
+                        onClick={async () => {
+                          const msg = prompt('Enter notification message for customer:');
+                          if (msg && order.user_id) {
+                            await supabase.from('notifications').insert([{
+                              user_id: order.user_id,
+                              title: `Order Update: ${order.status.toUpperCase()}`,
+                              message: msg,
+                              type: 'info'
+                            }]);
+                            alert('Notification sent!');
+                          }
+                        }}
+                      >
+                        🔔
+                      </button>
                     </td>
                   </tr>
                 ))}
