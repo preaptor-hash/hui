@@ -1,5 +1,7 @@
 'use client';
 
+import React, { useState } from 'react';
+import styles from './AdminPanel.module.css';
 import { supabase } from '../lib/supabase';
 
 interface AdminLoginProps {
