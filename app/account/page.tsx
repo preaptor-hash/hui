@@ -1,11 +1,22 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ShoppingBag, Heart, Wallet, Star, ArrowRight, Package, Truck, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import styles from './Account.module.css';
+import { useAuth } from '@/lib/AuthContext';
 
 const AccountOverview = () => {
+  const { user, profile, loading } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push('/login');
+    }
+  }, [user, loading, router]);
+
   const stats = [
     { name: 'Active Orders', value: '02', icon: <ShoppingBag size={22} />, color: '#6366f1' },
     { name: 'My Wishlist', value: '18', icon: <Heart size={22} />, color: '#f43f5e' },
@@ -34,6 +45,12 @@ const AccountOverview = () => {
     visible: { y: 0, opacity: 1 }
   };
 
+  if (loading || !user) {
+    return <div style={{ padding: '4rem', textAlign: 'center' }}>Loading profile...</div>;
+  }
+
+  const firstName = profile?.full_name?.split(' ')[0] || user?.email?.split('@')[0] || 'Guest';
+
   return (
     <motion.div 
       className={styles.overview}
@@ -43,7 +60,7 @@ const AccountOverview = () => {
     >
       <motion.div className={styles.welcomeBanner} variants={itemVariants}>
         <div className={styles.bannerContent}>
-          <h2>Welcome Back, John</h2>
+          <h2>Welcome Back, {firstName}</h2>
           <p>You have 2 premium shipments arriving by Tuesday. Track your style journey.</p>
         </div>
         <button className={styles.bannerBtn}>Track Shipments</button>

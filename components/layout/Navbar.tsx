@@ -118,7 +118,6 @@ const Navbar = () => {
           <div className={styles.rightSection}>
             <Link href="/wishlist" className={`${styles.iconBtn} ${styles.desktopOnly}`} aria-label="Wishlist">
               <Heart size={20} />
-              <span className={styles.badge}>0</span>
             </Link>
             <Link href="/notifications" className={styles.iconBtn} aria-label="Notifications">
               <Bell size={20} />
@@ -128,9 +127,22 @@ const Navbar = () => {
               <ShoppingCart size={20} />
               {totalItems > 0 && <span className={styles.badge}>{totalItems}</span>}
             </Link>
-            <Link href="/account" className={styles.userAvatar} aria-label="Profile">
-              <User size={18} />
-            </Link>
+
+            {isAdmin && (
+              <Link href="/admin" className={styles.iconBtn} aria-label="Admin Dashboard" style={{ color: 'var(--primary)' }}>
+                <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>Admin</span>
+              </Link>
+            )}
+
+            {user ? (
+              <Link href="/account" className={styles.userAvatar} aria-label="Profile">
+                <User size={18} />
+              </Link>
+            ) : (
+              <Link href="/login" className={styles.loginBtn}>
+                Login
+              </Link>
+            )}
           </div>
         </div>
 
