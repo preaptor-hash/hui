@@ -6,7 +6,10 @@ import { Search, Heart, ShoppingCart, User, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Navbar.module.css';
 
+import { useCart } from '@/lib/CartContext';
+
 const Navbar = () => {
+  const { totalItems } = useCart();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -111,11 +114,11 @@ const Navbar = () => {
           <div className={styles.rightSection}>
             <Link href="/wishlist" className={`${styles.iconBtn} ${styles.desktopOnly}`} aria-label="Wishlist">
               <Heart size={20} />
-              <span className={styles.badge}>3</span>
+              <span className={styles.badge}>0</span>
             </Link>
             <Link href="/cart" className={styles.iconBtn} aria-label="Cart">
               <ShoppingCart size={20} />
-              <span className={styles.badge}>5</span>
+              {totalItems > 0 && <span className={styles.badge}>{totalItems}</span>}
             </Link>
             <Link href="/account" className={styles.userAvatar} aria-label="Profile">
               <User size={18} />

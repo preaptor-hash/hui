@@ -1,29 +1,16 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { Trash2, Minus, Plus, ArrowLeft, ShieldCheck, Truck, RotateCcw, ShoppingBag, ChevronRight } from 'lucide-react';
+import { Trash2, Minus, Plus, ArrowLeft, ShieldCheck, RotateCcw, ShoppingBag, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { products } from '@/constants/products';
+import { useCart } from '@/lib/CartContext';
 import styles from './Cart.module.css';
 
 const CartPage = () => {
-  const [cartItems, setCartItems] = useState(
-    products.slice(0, 2).map(p => ({ ...p, quantity: 1 }))
-  );
+  const { cartItems, removeFromCart, updateQuantity, subtotal } = useCart();
 
-  const updateQuantity = (id: string, delta: number) => {
-    setCartItems(items => items.map(item => 
-      item.id === id ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item
-    ));
-  };
-
-  const removeItem = (id: string) => {
-    setCartItems(items => items.filter(item => item.id !== id));
-  };
-
-  const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-  const shipping = subtotal > 10000 ? 0 : 500;
+  const shipping = subtotal > 10000 || subtotal === 0 ? 0 : 500;
   const tax = subtotal * 0.18;
   const total = subtotal + shipping + tax;
 
@@ -111,7 +98,7 @@ const CartPage = () => {
                       <span className={styles.lineTotal}>₹{(item.price * item.quantity).toLocaleString('en-IN')}</span>
                       <span className={styles.unitPrice}>₹{item.price.toLocaleString('en-IN')} / unit</span>
                     </div>
-                    <button className={styles.removeBtn} onClick={() => removeItem(item.id)} title="Remove Item">
+                    <button className={styles.removeBtn} onClick={() => removeFromCart(item.id)} title="Remove Item">
                       <Trash2 size={18} />
                     </button>
                   </div>

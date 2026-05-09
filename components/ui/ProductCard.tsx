@@ -6,17 +6,20 @@ import { Star, Heart, ShoppingCart, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Product } from '@/constants/products';
 import styles from './ProductCard.module.css';
+import { useCart } from '@/lib/CartContext';
 
 interface ProductCardProps {
   product: Product;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+  const { addToCart } = useCart();
   const [wishlisted, setWishlisted] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
 
   const handleCart = (e: React.MouseEvent) => {
     e.preventDefault();
+    addToCart(product);
     setAddedToCart(true);
     setTimeout(() => setAddedToCart(false), 2000);
   };

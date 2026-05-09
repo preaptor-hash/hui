@@ -9,16 +9,29 @@ import { products } from '@/constants/products';
 import ProductCard from '@/components/ui/ProductCard';
 import styles from './ProductDetail.module.css';
 
+import { useCart } from '@/lib/CartContext';
+
 const ProductDetailPage = () => {
   const { slug } = useParams();
+  const { addToCart, updateQuantity: updateCartQuantity } = useCart();
   const [activeTab, setActiveTab] = useState('Description');
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(0);
   const [isScrolledPast, setIsScrolledPast] = useState(false);
+  const [isAdded, setIsAdded] = useState(false);
 
   // Find product by slug/id
   const product = products.find(p => p.id === slug) || products[0];
   
+  const handleAddToCart = () => {
+    // Add multiple quantities if needed
+    for (let i = 0; i < quantity; i++) {
+      addToCart(product);
+    }
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 2000);
+  };
+
   const thumbnails = [
     product.image,
     'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80',
@@ -138,9 +151,9 @@ const ProductDetailPage = () => {
                 <span>{quantity}</span>
                 <button onClick={() => setQuantity(quantity + 1)}><Plus size={18} /></button>
               </div>
-              <button className={styles.addToCartBtn}>
+              <button className={`${styles.addToCartBtn} ${isAdded ? styles.added : ''}`} onClick={handleAddToCart}>
                 <ShoppingCart size={20} />
-                <span>Add to Cart</span>
+                <span>{isAdded ? 'Added to Bag!' : 'Add to Cart'}</span>
               </button>
             </div>
 
@@ -335,8 +348,10 @@ const ProductDetailPage = () => {
                 </div>
               </div>
               <div className={styles.stickyActions}>
-                <button className={styles.stickyCartBtn}><ShoppingCart size={18} /></button>
-                <button className={styles.stickyBuyBtn}>Buy Now</button>
+                <button className={`${styles.stickyCartBtn} ${isAdded ? styles.added : ''}`} onClick={handleAddToCart}>
+                  {isAdded ? <Award size={18} /> : <ShoppingCart size={18} />}
+                </button>
+                <Link href="/checkout" className={styles.stickyBuyBtn}>Buy Now</Link>
               </div>
             </div>
           </motion.div>

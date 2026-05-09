@@ -24,6 +24,8 @@ export const metadata: Metadata = {
   description: "Experience luxury shopping with Indica Luxe. Premium products, seamless experience.",
 };
 
+import { CartProvider } from "@/lib/CartContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,13 +34,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
       <body>
-        <Navbar />
-        <main>
-          {children}
-          <TrustBar />
-        </main>
-        <BottomNav />
-        <Footer />
+        <CartProvider>
+          <Navbar />
+          <main>
+            {children}
+            <TrustBar />
+          </main>
+          <BottomNav />
+          <Footer />
+        </CartProvider>
       </body>
     </html>
   );

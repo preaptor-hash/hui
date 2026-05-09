@@ -7,15 +7,17 @@ import { Check, ShieldCheck, Lock, CreditCard, Landmark, Wallet, Truck, ChevronR
 import { products } from '@/constants/products';
 import styles from './Checkout.module.css';
 
+import { useCart } from '@/lib/CartContext';
+
 const CheckoutPage = () => {
   const router = useRouter();
+  const { cartItems, subtotal } = useCart();
   const [step, setStep] = useState(1);
-  const cartItems = products.slice(0, 2); // Mock cart items
 
   const handleNext = () => {
     if (step < 3) setStep(step + 1);
     else {
-      router.push('/order/success/ORD-7281902');
+      router.push('/order/success/ORD-' + Math.random().toString(36).substr(2, 9).toUpperCase());
     }
   };
 
@@ -25,9 +27,9 @@ const CheckoutPage = () => {
     { id: 3, name: 'Review' }
   ];
 
-  const subtotal = cartItems.reduce((acc, item) => acc + item.price, 0);
+  const shipping = subtotal > 10000 || subtotal === 0 ? 0 : 500;
   const tax = subtotal * 0.18;
-  const total = subtotal + tax;
+  const total = subtotal + shipping + tax;
 
   return (
     <div className={styles.page}>
@@ -197,7 +199,9 @@ const CheckoutPage = () => {
               </div>
               <div className={styles.row}>
                 <span>Shipping</span>
-                <span className={styles.free}>Complementary</span>
+                <span className={shipping === 0 ? styles.free : ''}>
+                  {shipping === 0 ? 'Complementary' : `₹${shipping.toLocaleString('en-IN')}`}
+                </span>
               </div>
               <div className={styles.row}>
                 <span>Tax (GST 18%)</span>
