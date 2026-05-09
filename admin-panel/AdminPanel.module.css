@@ -597,3 +597,172 @@
   color: #fff;
   cursor: pointer;
 }
+
+/* Banner Management */
+.bannerGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.bannerCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.bannerCard:hover {
+  border-color: rgba(196, 161, 99, 0.2);
+  transform: translateY(-3px);
+}
+
+.bannerImgWrapper {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+}
+
+.bannerImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bannerBadge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.bannerInfo {
+  padding: 1rem;
+}
+
+.bannerInfo h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem 0;
+  color: #fff;
+}
+
+.bannerInfo p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 1rem 0;
+}
+
+.bannerActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.addBannerForm {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+
+.addBannerForm h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem 0;
+  color: var(--primary);
+}
+
+/* Admin Badge */
+.adminBadge {
+  background: rgba(196, 161, 99, 0.15) !important;
+  color: var(--primary) !important;
+  border-color: rgba(196, 161, 99, 0.3) !important;
+}
+
+/* Image Upload */
+.uploadSection {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.uploadSection h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: #fff;
+}
+
+.uploadSection > p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.9rem;
+  margin: 0 0 1.5rem 0;
+}
+
+.dropZone {
+  border: 2px dashed rgba(196, 161, 99, 0.3);
+  border-radius: 12px;
+  padding: 2.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.dropZone:hover {
+  border-color: var(--primary);
+  background: rgba(196, 161, 99, 0.05);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.uploadPreview {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+}
+
+.uploadUrl {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.5);
+  word-break: break-all;
+  margin: 0 0 0.8rem 0;
+  font-family: monospace;
+}
+
+/* Sidebar icons */
+.sidebar nav ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* Responsive sidebar item text */
+@media (max-width: 768px) {
+  .bannerGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .uploadPreview {
+    flex-direction: column;
+  }
+}

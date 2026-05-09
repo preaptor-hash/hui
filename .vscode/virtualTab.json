@@ -19,6 +19,7 @@
       "app/notifications/Notifications.module.css",
       "app/notifications/page.tsx",
       "lib/NotificationContext.tsx",
+      "eslint.config.mjs",
       "lib/AuthContext.tsx",
       "admin/README.md",
       "app/admin/page.tsx",

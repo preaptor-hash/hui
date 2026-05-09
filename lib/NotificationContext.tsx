@@ -31,9 +31,21 @@ export const NotificationProvider = ({ children }: { children: React.ReactNode }
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const { user } = useAuth();
 
+  const fetchNotifications = React.useCallback(async () => {
+    if (!user) return;
+    const { data, error } = await supabase
+      .from('notifications')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (!error && data) {
+      setNotifications(data as Notification[]);
+    }
+  }, [user]);
+
   useEffect(() => {
     if (!user) {
-      setNotifications([]);
+      setNotifications(prev => prev.length > 0 ? [] : prev);
       return;
     }
 
@@ -55,19 +67,7 @@ export const NotificationProvider = ({ children }: { children: React.ReactNode }
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [user]);
-
-  async function fetchNotifications() {
-    if (!user) return;
-    const { data, error } = await supabase
-      .from('notifications')
-      .select('*')
-      .order('created_at', { ascending: false });
-
-    if (!error && data) {
-      setNotifications(data as Notification[]);
-    }
-  }
+  }, [user, fetchNotifications]);
 
   const markAsRead = async (id: string) => {
     const { error } = await supabase

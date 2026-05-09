@@ -75,7 +75,7 @@ const ContactPage = () => {
           <div className={styles.formSide}>
             <div className={styles.formCard}>
               <h3>Send us a Message</h3>
-              <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+              <p>We&apos;d love to hear from you. Our team is here to help with any inquiries.</p>
               
               <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
                 <div className={styles.inputGroup}>
