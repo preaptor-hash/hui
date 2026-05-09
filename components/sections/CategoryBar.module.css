@@ -32,6 +32,14 @@
   .scrollContainer {
     justify-content: flex-start; /* Scroll from start on mobile/tablet */
     gap: 20px;
+    padding: 0 16px 4px; /* Consistent with global container padding */
+  }
+}
+
+@media (max-width: 768px) {
+  .scrollContainer {
+    gap: 16px;
+    padding: 0 16px 4px;
   }
 }
 

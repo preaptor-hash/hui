@@ -86,6 +86,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden; /* Prevent horizontal overflow globally */
 }
 
 body {
@@ -190,12 +191,24 @@ h1, h2, h3, h4, h5, h6 {
 
 .container {
   max-width: var(--container-max-width);
+  width: 100%;
   margin: 0 auto;
   padding: 0 20px;
+  box-sizing: border-box;
 }
 
 section {
   padding: var(--section-padding) 0;
+  overflow-x: hidden; /* Prevent section-level horizontal bleed */
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  section {
+    padding: clamp(40px, 8vw, 80px) 0;
+  }
 }
 
 /* =====================

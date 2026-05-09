@@ -5,8 +5,8 @@
     "files": [
       "app/layout.tsx",
       "app/page.tsx",
-      "public/mastercard-visa-apple-pay-google-pay-popular-payment-systems-finance-system-app-bank-card-illustration-free-vector.jpg",
       "app/globals.css",
+      "netlify.toml",
       "app/account/orders/page.tsx",
       "app/account/orders/Orders.module.css",
       "components/ui/PaymentIcons.tsx",
@@ -64,6 +64,10 @@
       "components/sections/FeaturedCategories.tsx",
       "components/sections/TrustBar.module.css",
       "components/sections/TrustBar.tsx",
+      "app/account/settings/page.tsx",
+      "app/account/payment/page.tsx",
+      "app/account/addresses/page.tsx",
+      "app/account/wishlist/page.tsx",
       "components/sections/Hero.module.css",
       "components/sections/Hero.tsx",
       "app/deals/DealsPage.module.css",
@@ -74,11 +78,7 @@
       "components/layout/Footer.module.css",
       "components/layout/Footer.tsx",
       "components/layout/Navbar.module.css",
-      "components/layout/Navbar.tsx",
-      "app/account/settings/page.tsx",
-      "app/account/payment/page.tsx",
-      "app/account/addresses/page.tsx",
-      "app/account/wishlist/page.tsx"
+      "components/layout/Navbar.tsx"
     ],
     "builtIn": true,
     "bookmarks": {}

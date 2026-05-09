@@ -174,20 +174,49 @@
 }
 
 @media (max-width: 640px) {
+  .section {
+    padding: 40px 0;
+  }
+
+  .banner {
+    padding: 28px 20px;
+    gap: 24px;
+    border-radius: 20px;
+  }
+
+  .badge {
+    font-size: 11px;
+    padding: 5px 12px;
+    margin-bottom: 16px;
+  }
+
   .title {
-    font-size: 32px;
+    font-size: 26px;
+    margin-bottom: 10px;
   }
-  
+
   .subtitle {
-    font-size: 16px;
+    font-size: 14px;
+    margin-bottom: 20px;
   }
-  
-  .saleText {
-    font-size: 48px;
+
+  .timerContainer {
+    gap: 12px;
+    margin-bottom: 24px;
   }
-  
-  .saleGraphics {
-    width: 200px;
-    height: 200px;
+
+  .timeValue {
+    font-size: 28px;
+  }
+
+  .shopBtn {
+    padding: 14px 24px;
+    font-size: 14px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .right {
+    display: none; /* Hide decorative graphic on small screens */
   }
 }

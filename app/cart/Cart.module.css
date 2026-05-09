@@ -408,6 +408,32 @@
   }
   
   .cartItem {
-    padding: 24px;
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  .itemImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+  }
+
+  .itemName {
+    font-size: 14px;
+  }
+
+  .stepper {
+    gap: 10px;
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  .lineTotal {
+    font-size: 16px;
+  }
+
+  .checkoutBtn {
+    padding: 16px;
+    font-size: 15px;
   }
 }

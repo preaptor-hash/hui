@@ -97,24 +97,56 @@
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+
+  .container {
+    border-radius: 24px;
+    padding: 48px 24px;
+  }
+
   .title {
-    font-size: 32px;
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    margin-bottom: 28px;
   }
   
   .inputWrapper {
     flex-direction: column;
     background: transparent;
     box-shadow: none;
-    gap: 16px;
+    gap: 12px;
     padding: 0;
   }
   
   .input {
     background: white;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 14px 20px;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
   
   .btn {
-    padding: 16px;
+    padding: 14px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 40px 0;
+  }
+
+  .container {
+    border-radius: 16px;
+    padding: 36px 20px;
+  }
+
+  .title {
+    font-size: 24px;
   }
 }

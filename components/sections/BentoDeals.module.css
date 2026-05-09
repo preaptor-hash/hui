@@ -141,3 +141,55 @@
   font-size: 11px;
   opacity: 0.9;
 }
+
+@media (max-width: 768px) {
+  .section {
+    padding: 12px 0;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  
+  .techGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bentoBox {
+    padding: 14px;
+  }
+
+  .header h2 {
+    font-size: 18px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .dealTitle {
+    font-size: 11px;
+  }
+
+  .label {
+    font-size: 10px;
+  }
+
+  .techGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .techInfo {
+    padding: 6px;
+  }
+
+  .from {
+    font-size: 11px;
+  }
+}
