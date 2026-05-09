@@ -13,7 +13,7 @@ import { useAuth } from '@/lib/AuthContext';
 const Navbar = () => {
   const { totalItems } = useCart();
   const { unreadCount } = useNotifications();
-  const { user } = useAuth();
+  const { user, isAdmin } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
