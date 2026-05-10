@@ -604,6 +604,17 @@
   font-weight: 700;
 }
 
+@media (max-width: 768px) {
+  .stickyBar {
+    bottom: 70px; /* Clear the BottomNav */
+    padding: 8px 0;
+  }
+  
+  .stickyText strong {
+    font-size: 12px;
+  }
+}
+
 @media (max-width: 991px) {
   .mainGrid {
     grid-template-columns: 1fr;
