@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Search, Heart, ShoppingCart, User, Menu, X, Bell } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Navbar.module.css';
@@ -17,6 +18,8 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
+  const pathname = usePathname();
+
 
   const trending = ['Limited Edition Watches', 'Luxury Loungewear', 'Artisan Perfumes', 'Minimalist Tech'];
   const quickCategories = ['Men', 'Women', 'Accessories', 'Beauty', 'Home'];
@@ -40,6 +43,8 @@ const Navbar = () => {
       document.activeElement.blur();
     }
   };
+
+  if (pathname?.startsWith('/admin')) return null;
 
   return (
     <>

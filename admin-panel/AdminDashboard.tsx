@@ -132,6 +132,7 @@ export default function AdminDashboard() {
   // Image Upload to Supabase Storage
   const handleImageUpload = async (file: File): Promise<string | null> => {
     setUploadingImage(true);
+    // eslint-disable-next-line react-hooks/purity
     const filename = `${Date.now()}-${file.name.replace(/\s/g, '-')}`;
     const { data, error } = await supabase.storage
       .from('product-images')

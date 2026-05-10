@@ -3,11 +3,15 @@
 import React from 'react';
 import Link from 'next/link';
 import { Home, ShoppingBag, Percent, User, ShieldAlert, LogIn } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import styles from './BottomNav.module.css';
 import { useAuth } from '@/lib/AuthContext';
 
 const BottomNav = () => {
   const { user, isAdmin } = useAuth();
+  const pathname = usePathname();
+
+  if (pathname?.startsWith('/admin')) return null;
 
   return (
     <div className={styles.bottomNav}>

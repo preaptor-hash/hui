@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Mail, Phone, MapPin, ArrowRight, ChevronDown, Plus, Minus } from 'lucide-react';
 import { Facebook, Twitter, Instagram, Youtube } from '@/components/ui/BrandIcons';
 import styles from './Footer.module.css';
@@ -14,6 +15,9 @@ const Footer = () => {
       setOpenSection(openSection === section ? null : section);
     }
   };
+
+  const pathname = usePathname();
+  if (pathname?.startsWith('/admin')) return null;
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.container}`}>

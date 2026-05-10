@@ -1,8 +1,14 @@
+"use client";
+
 import React from 'react';
 import { Truck, RotateCcw, ShieldCheck, Headset } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import styles from './TrustBar.module.css';
 
 const TrustBar = () => {
+  const pathname = usePathname();
+  if (pathname?.startsWith('/admin')) return null;
+
   const features = [
     {
       icon: <Truck size={32} />,
