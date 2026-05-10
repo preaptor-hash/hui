@@ -228,3 +228,26 @@
   color: #10b981;
   background: rgba(16, 185, 129, 0.05);
 }
+
+@media (max-width: 480px) {
+  .content {
+    padding: 10px 12px 12px;
+    gap: 4px;
+  }
+  .name {
+    font-size: 13px;
+    min-height: 36px;
+  }
+  .price {
+    font-size: 15px;
+  }
+  .cartBtn {
+    height: 34px;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .image {
+    width: 95%;
+    height: 95%;
+  }
+}

@@ -87,11 +87,13 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden; /* Prevent horizontal overflow globally */
+  overscroll-behavior-y: none; /* Disable native pull-to-refresh */
 }
 
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  overscroll-behavior-y: none; /* Disable native pull-to-refresh on body */
   background: var(--neutral-bg);
   color: var(--text-primary);
   font-family: var(--font-inter);
@@ -108,7 +110,7 @@ main {
 @media (max-width: 768px) {
   main {
     padding-top: 54px; /* Mobile Navbar Height */
-    padding-bottom: 64px; /* Mobile BottomNav Height */
+    padding-bottom: 90px; /* Mobile BottomNav Height + Safe Space */
   }
 }
 
