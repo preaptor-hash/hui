@@ -52,12 +52,12 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
 
   return (
     <>
-      <div className={styles.logo} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-        <h2>Indica<span>Admin</span></h2>
+      <div className={styles.logo} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', padding: '0 0.5rem' }}>
+        <h2 style={{ color: '#18181b' }}>Indica<span style={{ color: '#6366f1' }}>Admin</span></h2>
         {onClose && (
           <button 
             onClick={onClose} 
-            style={{ background: 'transparent', border: 'none', color: '#fff', cursor: 'pointer' }}
+            style={{ background: 'transparent', border: 'none', color: '#18181b', cursor: 'pointer' }}
             className="mobile-only"
           >
             <X size={24} />
@@ -66,7 +66,7 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
       </div>
       
       <nav style={{ width: '100%' }}>
-        <ul>
+        <ul className={styles.navList}>
           {menuItems.map((item) => {
             const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
             const Icon = item.icon;
@@ -78,7 +78,7 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
                 onClick={() => handleNavClick(item.href)}
                 style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', cursor: 'pointer' }}
               >
-                <Icon size={20} />
+                <Icon size={20} color={isActive ? '#fff' : '#71717a'} />
                 {item.name}
               </li>
             );
@@ -86,11 +86,11 @@ export default function AdminSidebar({ onClose }: AdminSidebarProps) {
         </ul>
       </nav>
 
-      <div style={{ marginTop: 'auto', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.1)', width: '100%' }}>
+      <div style={{ marginTop: 'auto', paddingTop: '2rem', borderTop: '1px solid #e4e4e7', width: '100%' }}>
         <button
           onClick={handleLogout}
           className={styles.addBtn}
-          style={{ width: '100%', background: 'transparent', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.8rem', justifyContent: 'center' }}
+          style={{ width: '100%', background: 'transparent', border: '1px solid #e4e4e7', color: '#18181b', display: 'flex', alignItems: 'center', gap: '0.8rem', justifyContent: 'center' }}
         >
           <LogOut size={18} />
           Sign Out

@@ -1,16 +1,15 @@
 .adminContainer {
   display: flex;
   min-height: 100vh;
-  background-color: #0a0a0b;
-  color: #fff;
+  background-color: #f8f9fa;
+  color: #18181b;
   font-family: 'Inter', sans-serif;
 }
 
 .sidebar {
   width: 260px;
-  background: rgba(18, 18, 20, 0.8);
-  backdrop-filter: blur(10px);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border-right: 1px solid #e4e4e7;
   padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
@@ -24,12 +23,13 @@
 }
 
 .logo span {
-  color: #c4a163;
+  color: #6366f1;
 }
 
 .sidebar nav ul {
   list-style: none;
   padding: 0;
+  margin-top: 1rem;
 }
 
 .sidebar nav li {
@@ -38,24 +38,25 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: rgba(255, 255, 255, 0.6);
+  color: #71717a;
   font-weight: 500;
 }
 
 .sidebar nav li:hover {
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
+  background: #f4f4f5;
+  color: #18181b;
 }
 
 .sidebar nav li.active {
-  background: #c4a163;
-  color: #000;
+  background: #6366f1;
+  color: #fff;
 }
 
 .mainContent {
   flex: 1;
   padding: 2rem 3rem;
   overflow-y: auto;
+  background: #f8f9fa;
 }
 
 .header {
@@ -67,7 +68,8 @@
 
 .header h1 {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 700;
+  color: #18181b;
 }
 
 .adminProfile {
@@ -79,8 +81,8 @@
 .avatar {
   width: 40px;
   height: 40px;
-  background: #c4a163;
-  color: #000;
+  background: #6366f1;
+  color: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -96,11 +98,12 @@
 }
 
 .statCard {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #ffffff;
+  border: 1px solid #e4e4e7;
   padding: 1.5rem;
   border-radius: 16px;
   transition: transform 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .statCard:hover {
@@ -110,7 +113,7 @@
 
 .statCard h3 {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: #71717a;
   margin-bottom: 1rem;
 }
 
@@ -131,10 +134,11 @@
 }
 
 .recentProducts {
-  background: rgba(255, 255, 255, 0.02);
+  background: #ffffff;
   border-radius: 20px;
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid #e4e4e7;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
 .sectionHeader {
@@ -167,14 +171,15 @@
 
 .adminTable th {
   padding: 1rem;
-  color: rgba(255, 255, 255, 0.4);
-  font-weight: 500;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #71717a;
+  font-weight: 600;
+  border-bottom: 1px solid #e4e4e7;
 }
 
 .adminTable td {
   padding: 1.2rem 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid #e4e4e7;
+  color: #18181b;
 }
 
 .tableImg {
@@ -254,8 +259,8 @@
 .menuBtn {
   display: none;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
+  border: 1px solid #e4e4e7;
+  color: #18181b;
   font-size: 1.2rem;
   padding: 0.5rem;
   border-radius: 8px;
@@ -299,6 +304,7 @@
   font-size: 2.2rem;
   letter-spacing: -1px;
   margin-bottom: 0.5rem;
+  color: #18181b;
 }
 
 .loginHeader span {
@@ -702,7 +708,7 @@
   font-size: 1.1rem;
   font-weight: 600;
   margin: 0 0 0.5rem 0;
-  color: #fff;
+  color: #18181b;
 }
 
 .uploadSection > p {
