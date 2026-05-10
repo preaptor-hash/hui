@@ -786,3 +786,189 @@
     grid-template-columns: 1fr;
   }
 }
+/* Modern Table & Header Styles */
+.headerTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.subtitle {
+  color: #71717a;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  width: 280px;
+  transition: all 0.3s ease;
+}
+
+.searchBox:focus-within {
+  border-color: #6366f1;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.searchBox input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: #1e293b;
+  width: 100%;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.adminTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.adminTable th {
+  padding: 1.2rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.adminTable td {
+  padding: 1.2rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.productCell {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.miniImg {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f1f5f9;
+  flex-shrink: 0;
+}
+
+.pName {
+  display: block;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.95rem;
+}
+
+.pId {
+  display: block;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.priceCell {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.stockBadge {
+  padding: 0.4rem 0.8rem;
+  background: #f1f5f9;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.lowStock {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.statusBadge {
+  display: inline-flex;
+  padding: 0.4rem 0.8rem;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.statusBadge.active {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.statusBadge.inactive {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+/* Order Statuses */
+.statusBadge.pending { background: #fef9c3; color: #a16207; }
+.statusBadge.processing { background: #e0e7ff; color: #4338ca; }
+.statusBadge.delivered { background: #dcfce7; color: #16a34a; }
+.statusBadge.cancelled { background: #fee2e2; color: #b91c1c; }
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actionBtn {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #f1f5f9;
+  color: #64748b;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.actionBtn:hover {
+  background: #6366f1;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+.actionBtn.delete:hover {
+  background: #ef4444;
+}
+
+/* Customer Cell */
+.customerCell {
+  display: flex;
+  flex-direction: column;
+}
+
+.cEmail {
+  font-size: 0.8rem;
+  color: #64748b;
+}
