@@ -766,3 +766,14 @@
     flex-direction: column;
   }
 }
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 991px) {
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+  }
+}

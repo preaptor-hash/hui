@@ -619,7 +619,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 480px) {
   .relatedGrid {
     grid-template-columns: 1fr;
   }
@@ -629,5 +629,14 @@
     justify-content: flex-start;
     overflow-x: auto;
     padding-bottom: 0;
+  }
+
+  .purchaseActions {
+    flex-direction: column;
+  }
+  
+  .quantityControl {
+    width: 100%;
+    justify-content: center;
   }
 }

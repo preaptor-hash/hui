@@ -58,7 +58,7 @@ export default async function AdminDashboardPage() {
         })}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem' }}>
+      <div className={styles.dashboardGrid}>
         <div className={styles.recentProducts} style={{ minHeight: '400px' }}>
           <div className={styles.sectionHeader}>
             <h3 style={{ fontSize: '1.2rem', fontWeight: '600' }}>Revenue Analytics</h3>

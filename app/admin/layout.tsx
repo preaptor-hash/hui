@@ -3,7 +3,8 @@
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import { useAuth } from '@/lib/AuthContext';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Menu, X } from 'lucide-react';
 import styles from '@/admin-panel/AdminPanel.module.css';
 
 export default function AdminLayout({
@@ -13,6 +14,7 @@ export default function AdminLayout({
 }) {
   const { user, profile, loading } = useAuth();
   const router = useRouter();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     if (!loading) {
@@ -32,17 +34,38 @@ export default function AdminLayout({
 
   return (
     <div className={styles.adminContainer}>
-      <AdminSidebar />
+      {/* Mobile Sidebar Overlay */}
+      {isSidebarOpen && (
+        <div 
+          className={styles.sidebarOverlay} 
+          style={{ display: 'block' }} 
+          onClick={() => setIsSidebarOpen(false)} 
+        />
+      )}
+
+      {/* Sidebar with mobile state */}
+      <div className={`${styles.sidebar} ${isSidebarOpen ? styles.open : ''}`}>
+        <AdminSidebar onClose={() => setIsSidebarOpen(false)} />
+      </div>
+
       <div className={styles.mainContent}>
         <header className={styles.header}>
-          <h1>Dashboard</h1>
+          <div className={styles.headerLeft}>
+            <button 
+              className={styles.menuBtn} 
+              onClick={() => setIsSidebarOpen(true)}
+            >
+              <Menu size={24} />
+            </button>
+            <h1>Dashboard</h1>
+          </div>
+          
           <div className={styles.adminProfile}>
             <div className={styles.avatar}>
               {(user.email?.[0] || 'A').toUpperCase()}
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'none' }} className="md-flex"> {/* Desktop only text */}
               <span style={{ fontSize: '0.9rem', fontWeight: '600' }}>{user.email}</span>
-              <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase' }}>{profile?.role || 'Admin'}</span>
             </div>
           </div>
         </header>
@@ -51,6 +74,12 @@ export default function AdminLayout({
           {children}
         </main>
       </div>
+
+      <style jsx global>{`
+        @media (min-width: 769px) {
+          .md-flex { display: flex !important; flex-direction: column; }
+        }
+      `}</style>
     </div>
   );
 }
