@@ -250,6 +250,7 @@
 /* Actions */
 .purchaseActions {
   display: flex;
+  align-items: stretch; /* Ensure children have same height */
   gap: 16px;
   margin-top: 10px;
 }
@@ -259,13 +260,15 @@
   align-items: center;
   gap: 16px;
   background: #f3f4f6;
-  padding: 8px 16px;
+  padding: 0 16px; /* Vertical padding removed to rely on parent stretch */
+  height: 54px; /* Fixed height for consistency */
   border-radius: 12px;
   font-weight: 700;
 }
 
 .addToCartBtn {
   flex: 1;
+  height: 54px; /* Fixed height matching quantity control */
   background: var(--primary-gradient);
   color: #fff;
   display: flex;

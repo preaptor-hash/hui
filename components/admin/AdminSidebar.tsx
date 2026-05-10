@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
+import styles from '@/admin-panel/AdminPanel.module.css';
 
 const menuItems = [
   { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
@@ -40,46 +41,41 @@ export default function AdminSidebar() {
   };
 
   return (
-    <div className="flex flex-col w-64 bg-[#0a0a0b] text-zinc-400 h-screen sticky top-0 border-r border-zinc-800/50">
-      <div className="flex items-center justify-center h-20 border-b border-zinc-800/50">
-        <Link href="/admin" className="text-2xl font-bold text-white tracking-tight">
-          Indica<span className="text-zinc-500 font-light">Admin</span>
-        </Link>
+    <aside className={styles.sidebar}>
+      <div className={styles.logo}>
+        <h2>Indica<span>Admin</span></h2>
       </div>
       
-      <div className="flex-1 overflow-y-auto py-6 px-4">
-        <nav className="space-y-1">
+      <nav>
+        <ul>
           {menuItems.map((item) => {
             const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
             const Icon = item.icon;
             
             return (
-              <Link
+              <li 
                 key={item.name}
-                href={item.href}
-                className={`flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors group ${
-                  isActive 
-                    ? 'bg-white/10 text-white shadow-sm' 
-                    : 'text-zinc-400 hover:bg-white/5 hover:text-white'
-                }`}
+                className={isActive ? styles.active : ''}
+                onClick={() => router.push(item.href)}
               >
-                <Icon className={`mr-3 flex-shrink-0 h-5 w-5 ${isActive ? 'text-white' : 'text-zinc-500 group-hover:text-white'}`} />
+                <Icon size={20} />
                 {item.name}
-              </Link>
+              </li>
             );
           })}
-        </nav>
-      </div>
+        </ul>
+      </nav>
 
-      <div className="p-4 border-t border-zinc-800/50">
+      <div style={{ marginTop: 'auto', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
         <button
           onClick={handleLogout}
-          className="flex items-center w-full px-4 py-3 text-sm font-medium rounded-lg text-zinc-400 hover:bg-white/5 hover:text-white transition-colors group"
+          className={styles.addBtn}
+          style={{ width: '100%', background: 'transparent', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', display: 'flex', alignItems: 'center', gap: '0.8rem', justifyContent: 'center' }}
         >
-          <LogOut className="mr-3 flex-shrink-0 h-5 w-5 text-zinc-500 group-hover:text-white" />
+          <LogOut size={18} />
           Sign Out
         </button>
       </div>
-    </div>
+    </aside>
   );
 }

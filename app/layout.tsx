@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-import BottomNav from "@/components/layout/BottomNav";
-import TrustBar from "@/components/sections/TrustBar";
+import ConditionalLayout from "@/components/layout/ConditionalLayout";
+import { CartProvider } from "@/lib/CartContext";
+import { AuthProvider } from "@/lib/AuthContext";
+import { NotificationProvider } from "@/lib/NotificationContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,10 +24,6 @@ export const metadata: Metadata = {
   description: "Experience luxury shopping with Indica Luxe. Premium products, seamless experience.",
 };
 
-import { CartProvider } from "@/lib/CartContext";
-import { AuthProvider } from "@/lib/AuthContext";
-import { NotificationProvider } from "@/lib/NotificationContext";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -39,13 +35,9 @@ export default function RootLayout({
         <AuthProvider>
           <NotificationProvider>
             <CartProvider>
-              <Navbar />
-              <main>
+              <ConditionalLayout>
                 {children}
-                <TrustBar />
-              </main>
-              <BottomNav />
-              <Footer />
+              </ConditionalLayout>
             </CartProvider>
           </NotificationProvider>
         </AuthProvider>

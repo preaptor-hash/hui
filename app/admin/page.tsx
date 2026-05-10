@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { IndianRupee, ShoppingCart, Users, Package } from 'lucide-react';
 import { Metadata } from 'next';
+import styles from '@/admin-panel/AdminPanel.module.css';
 
 export const metadata: Metadata = {
   title: 'Dashboard Overview',
@@ -8,18 +9,16 @@ export const metadata: Metadata = {
 
 export const dynamic = 'force-dynamic';
 
-// Next.js App Router Page
 export default async function AdminDashboardPage() {
   const supabase = await createClient();
 
-  // Basic Aggregations (Mocked logic for speed, normally you'd use SQL COUNT or an RPC)
+  // Basic Aggregations
   const [{ count: orderCount }, { count: productCount }, { count: customerCount }] = await Promise.all([
     supabase.from('orders').select('*', { count: 'exact', head: true }),
     supabase.from('products').select('*', { count: 'exact', head: true }),
     supabase.from('profiles').select('*', { count: 'exact', head: true }).eq('role', 'customer'),
   ]);
 
-  // Total Revenue calculation (ideally done via sum in SQL)
   const { data: revenueData } = await supabase
     .from('orders')
     .select('grand_total')
@@ -28,58 +27,58 @@ export default async function AdminDashboardPage() {
   const totalRevenue = revenueData?.reduce((sum: number, order: any) => sum + Number(order.grand_total), 0) || 0;
 
   const kpis = [
-    { title: 'Total Revenue', value: `₹${totalRevenue.toLocaleString('en-IN')}`, icon: IndianRupee, color: 'text-zinc-900', bg: 'bg-zinc-100' },
-    { title: 'Total Orders', value: orderCount || 0, icon: ShoppingCart, color: 'text-zinc-800', bg: 'bg-zinc-100' },
-    { title: 'Total Customers', value: customerCount || 0, icon: Users, color: 'text-zinc-700', bg: 'bg-zinc-100/80' },
-    { title: 'Total Products', value: productCount || 0, icon: Package, color: 'text-zinc-600', bg: 'bg-zinc-100/50' },
+    { title: 'Total Revenue', value: `₹${totalRevenue.toLocaleString('en-IN')}`, icon: IndianRupee },
+    { title: 'Total Orders', value: orderCount || 0, icon: ShoppingCart },
+    { title: 'Total Customers', value: customerCount || 0, icon: Users },
+    { title: 'Total Products', value: productCount || 0, icon: Package },
   ];
 
   return (
-    <div className="p-8 max-w-7xl mx-auto space-y-8">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900">Dashboard Overview</h1>
-        <p className="mt-2 text-sm text-zinc-500">
-          Your enterprise performance metrics and recent activities.
-        </p>
+    <div>
+      <div className={styles.sectionHeader}>
+        <div style={{ marginBottom: '2rem' }}>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>Overview</p>
+          <h2 style={{ fontSize: '1.8rem', fontWeight: '700' }}>Enterprise Performance</h2>
+        </div>
       </div>
       
-      {/* KPI Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className={styles.statsGrid}>
         {kpis.map((kpi) => {
           const Icon = kpi.icon;
           return (
-            <div key={kpi.title} className="bg-white rounded-xl shadow-sm border border-zinc-200/50 p-6 flex items-center space-x-4 transition-all hover:shadow-md">
-              <div className={`p-3 rounded-full ${kpi.bg}`}>
-                <Icon className={`w-6 h-6 ${kpi.color}`} />
+            <div key={kpi.title} className={styles.statCard}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                <h3>{kpi.title}</h3>
+                <Icon size={20} color="#c4a163" />
               </div>
-              <div>
-                <p className="text-sm font-medium text-zinc-500">{kpi.title}</p>
-                <p className="text-2xl font-bold text-zinc-900">{kpi.value}</p>
-              </div>
+              <div className={styles.statValue}>{kpi.value}</div>
+              <div className={styles.statTrend}>+12.5% from last month</div>
             </div>
           );
         })}
       </div>
 
-      {/* Analytics Placeholder */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 bg-white rounded-xl shadow-sm border border-zinc-200/50 p-6 min-h-[400px]">
-          <h2 className="text-lg font-bold text-zinc-900 mb-4">Revenue Analytics</h2>
-          <div className="flex items-center justify-center h-full text-zinc-400 border-2 border-dashed border-zinc-100 rounded-lg">
-            [ Recharts Line Graph Placeholder ]
+      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '2rem' }}>
+        <div className={styles.recentProducts} style={{ minHeight: '400px' }}>
+          <div className={styles.sectionHeader}>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: '600' }}>Revenue Analytics</h3>
+          </div>
+          <div style={{ height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px dashed rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.3)' }}>
+            [ Real-time Chart Data ]
           </div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-sm border border-zinc-200/50 p-6">
-          <h2 className="text-lg font-bold text-zinc-900 mb-4">Recent Activity</h2>
-          <div className="space-y-4">
-            {/* Activity Items Placeholder */}
+        <div className={styles.recentProducts}>
+          <div className={styles.sectionHeader}>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: '600' }}>Recent Activity</h3>
+          </div>
+          <div style={{ display: 'grid', gap: '1.5rem' }}>
             {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="flex items-start space-x-3 text-sm">
-                <div className="w-2 h-2 rounded-full bg-zinc-800 mt-1.5" />
+              <div key={i} style={{ display: 'flex', gap: '1rem', fontSize: '0.85rem' }}>
+                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#c4a163', marginTop: '5px' }} />
                 <div>
-                  <p className="font-medium text-zinc-900">New order #ORD-{1000 + i}</p>
-                  <p className="text-zinc-500">2 minutes ago</p>
+                  <p style={{ fontWeight: '600', color: '#fff' }}>Order #ORD-{2000 + i} received</p>
+                  <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.75rem' }}>{i * 5} mins ago</p>
                 </div>
               </div>
             ))}
