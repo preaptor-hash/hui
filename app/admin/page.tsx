@@ -2,6 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import { IndianRupee, ShoppingCart, Users, Package } from 'lucide-react';
 import { Metadata } from 'next';
 import styles from '@/admin-panel/AdminPanel.module.css';
+import AnalyticsChart from '@/components/admin/AnalyticsChart';
 
 export const metadata: Metadata = {
   title: 'Dashboard Overview',
@@ -63,9 +64,7 @@ export default async function AdminDashboardPage() {
           <div className={styles.sectionHeader}>
             <h3 style={{ fontSize: '1.2rem', fontWeight: '600', color: '#18181b' }}>Revenue Analytics</h3>
           </div>
-          <div style={{ height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f8f9fa', borderRadius: '12px', border: '1px dashed #e4e4e7', color: '#a1a1aa' }}>
-            [ Real-time Chart Data ]
-          </div>
+          <AnalyticsChart data={[]} />
         </div>
 
         <div className={styles.recentProducts}>
