@@ -6,7 +6,7 @@ import { User } from '@supabase/supabase-js';
 
 interface Profile {
   id: string;
-  role: 'customer' | 'admin';
+  role: 'customer' | 'admin' | 'manager' | 'super_admin' | 'staff' | 'vendor';
   full_name?: string;
   avatar_url?: string;
 }

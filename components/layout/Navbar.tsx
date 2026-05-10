@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Search, Heart, ShoppingCart, User, Menu, X, Bell } from 'lucide-react';
+import { Search, Heart, ShoppingCart, User, Menu, X, Bell, LogOut } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './Navbar.module.css';
 
@@ -14,7 +14,7 @@ import { useAuth } from '@/lib/AuthContext';
 const Navbar = () => {
   const { totalItems } = useCart();
   const { unreadCount } = useNotifications();
-  const { user, isAdmin } = useAuth();
+  const { user, isAdmin, signOut } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -140,9 +140,19 @@ const Navbar = () => {
             )}
 
             {user ? (
-              <Link href="/account" className={styles.userAvatar} aria-label="Profile">
-                <User size={18} />
-              </Link>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <Link href="/account" className={styles.userAvatar} aria-label="Profile">
+                  <User size={18} />
+                </Link>
+                <button 
+                  onClick={() => signOut()} 
+                  className={styles.iconBtn} 
+                  aria-label="Logout"
+                  title="Logout"
+                >
+                  <LogOut size={18} />
+                </button>
+              </div>
             ) : (
               <Link href="/login" className={styles.loginBtn}>
                 Login

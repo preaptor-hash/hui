@@ -1,47 +1,40 @@
-import { Metadata } from 'next';
+'use client';
+
 import AdminSidebar from '@/components/admin/AdminSidebar';
-import { createClient } from '@/lib/supabase/server';
-import { redirect } from 'next/navigation';
+import { useAuth } from '@/lib/AuthContext';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
-export const metadata: Metadata = {
-  title: {
-    template: '%s | AdminPro Dashboard',
-    default: 'AdminPro Dashboard',
-  },
-  description: 'Enterprise eCommerce Administration',
-};
-
-export default async function AdminLayout({
+export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const { user, profile, loading } = useAuth();
+  const router = useRouter();
 
-  if (!user) {
-    redirect('/login?redirect=/admin');
+  useEffect(() => {
+    if (!loading) {
+      if (!user) {
+        router.push('/login?redirect=/admin');
+      } else if (profile && profile.role !== 'admin' && profile.role !== 'manager' && profile.role !== 'super_admin') {
+        // If logged in but not an admin, kick them out to storefront
+        router.push('/');
+      }
+    }
+  }, [user, profile, loading, router]);
+
+  if (loading) {
+    return <div className="flex h-screen items-center justify-center bg-[#f8f9fa]">Loading Admin...</div>;
   }
 
-  // Fetch user role
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('role')
-    .eq('id', user.id)
-    .single();
-
-  // If strict role checking is needed
-  const adminRoles = ['admin', 'manager', 'super_admin'];
-  if (!profile || !adminRoles.includes(profile.role)) {
-    // Optionally redirect to home if not admin
-    // redirect('/');
-  }
+  if (!user || (profile && profile.role !== 'admin' && profile.role !== 'manager' && profile.role !== 'super_admin')) return null; // Redirecting
 
   return (
     <div className="flex h-screen bg-[#f8f9fa] overflow-hidden">
       <AdminSidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Admin Header Navbar could go here */}
+        {/* Admin Header */}
         <header className="h-16 bg-white/80 backdrop-blur-md border-b border-zinc-200/50 flex items-center justify-between px-8 z-10 sticky top-0">
           <div className="text-lg font-medium text-zinc-800">
             Welcome back, {user.email}
