@@ -9,7 +9,7 @@ export async function createRefundRequest(data: {
   reason: string;
   type: string; // 'full' or 'partial'
   items: { productId: string; quantity: number; reason: string }[];
-  evidenceFiles?: File[];
+  evidenceFiles?: any[];
 }) {
   const supabase = await createClient();
 
