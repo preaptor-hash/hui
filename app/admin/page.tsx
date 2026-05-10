@@ -37,8 +37,8 @@ export default async function AdminDashboardPage() {
     <div>
       <div className={styles.sectionHeader}>
         <div style={{ marginBottom: '2rem' }}>
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>Overview</p>
-          <h2 style={{ fontSize: '1.8rem', fontWeight: '700' }}>Enterprise Performance</h2>
+          <p style={{ color: '#71717a', fontSize: '0.9rem', marginBottom: '0.5rem' }}>Overview</p>
+          <h2 style={{ fontSize: '1.8rem', fontWeight: '800', color: '#18181b' }}>Enterprise Performance</h2>
         </div>
       </div>
       
@@ -49,7 +49,7 @@ export default async function AdminDashboardPage() {
             <div key={kpi.title} className={styles.statCard}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <h3>{kpi.title}</h3>
-                <Icon size={20} color="#c4a163" />
+                <Icon size={20} color="#6366f1" />
               </div>
               <div className={styles.statValue}>{kpi.value}</div>
               <div className={styles.statTrend}>+12.5% from last month</div>
@@ -61,9 +61,9 @@ export default async function AdminDashboardPage() {
       <div className={styles.dashboardGrid}>
         <div className={styles.recentProducts} style={{ minHeight: '400px' }}>
           <div className={styles.sectionHeader}>
-            <h3 style={{ fontSize: '1.2rem', fontWeight: '600' }}>Revenue Analytics</h3>
+            <h3 style={{ fontSize: '1.2rem', fontWeight: '600', color: '#18181b' }}>Revenue Analytics</h3>
           </div>
-          <div style={{ height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px dashed rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.3)' }}>
+          <div style={{ height: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f8f9fa', borderRadius: '12px', border: '1px dashed #e4e4e7', color: '#a1a1aa' }}>
             [ Real-time Chart Data ]
           </div>
         </div>
@@ -75,10 +75,10 @@ export default async function AdminDashboardPage() {
           <div style={{ display: 'grid', gap: '1.5rem' }}>
             {[1, 2, 3, 4, 5].map((i) => (
               <div key={i} style={{ display: 'flex', gap: '1rem', fontSize: '0.85rem' }}>
-                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#c4a163', marginTop: '5px' }} />
+                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#6366f1', marginTop: '5px' }} />
                 <div>
-                  <p style={{ fontWeight: '600', color: '#fff' }}>Order #ORD-{2000 + i} received</p>
-                  <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.75rem' }}>{i * 5} mins ago</p>
+                  <p style={{ fontWeight: '600', color: '#18181b' }}>Order #ORD-{2000 + i} received</p>
+                  <p style={{ color: '#71717a', fontSize: '0.75rem' }}>{i * 5} mins ago</p>
                 </div>
               </div>
             ))}
