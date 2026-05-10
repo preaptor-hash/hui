@@ -230,24 +230,39 @@
 }
 
 @media (max-width: 480px) {
+  .card {
+    border-radius: 12px;
+  }
   .content {
-    padding: 10px 12px 12px;
-    gap: 4px;
+    padding: 8px 10px 10px;
+    gap: 3px;
   }
   .name {
-    font-size: 13px;
-    min-height: 36px;
+    font-size: 12px;
+    min-height: 32px;
+    margin-top: 2px;
+  }
+  .category {
+    font-size: 9px;
   }
   .price {
-    font-size: 15px;
+    font-size: 14px;
+  }
+  .originalPrice {
+    font-size: 11px;
   }
   .cartBtn {
-    height: 34px;
-    font-size: 12px;
-    margin-top: 6px;
+    height: 32px;
+    font-size: 11px;
+    margin-top: 4px;
+    border-radius: 8px;
   }
   .image {
-    width: 95%;
-    height: 95%;
+    width: 98%;
+    height: 98%;
+  }
+  .discountBadge, .newBadge {
+    font-size: 9px;
+    padding: 2px 6px;
   }
 }
