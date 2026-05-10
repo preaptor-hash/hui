@@ -1,5 +1,5 @@
 import { jsPDF } from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 import { format } from 'date-fns';
 
 export interface InvoiceItem {
@@ -37,10 +37,10 @@ export const generateInvoicePDF = async (data: InvoiceData): Promise<Buffer> => 
   doc.text('INVOICE', 14, 22);
   
   doc.setFontSize(10);
-  doc.text('Shree Harsha Ceramics', 14, 30);
-  doc.text('123 Enterprise Way', 14, 35);
-  doc.text('GSTIN: 29XXXXXXXXXX1Z5', 14, 40);
-  doc.text('support@shreeharsha.com', 14, 45);
+  doc.text('Indica Luxe Enterprise', 14, 30);
+  doc.text('Global Headquarters, Industrial Park', 14, 35);
+  doc.text('GSTIN: 29AAACL1234F1Z5', 14, 40);
+  doc.text('billing@indicaluxe.com', 14, 45);
 
   // Invoice Details
   doc.text(`Invoice No: ${data.invoice_number}`, 140, 30);
@@ -69,15 +69,15 @@ export const generateInvoicePDF = async (data: InvoiceData): Promise<Buffer> => 
     `${data.currency} ${item.total_amount.toFixed(2)}`
   ]);
 
-  (doc as Record<string, any>).autoTable({
+  autoTable(doc, {
     startY: 90,
     head: [tableColumn],
     body: tableRows,
     theme: 'grid',
-    headStyles: { fillColor: [41, 128, 185] }
+    headStyles: { fillColor: [99, 102, 241] } // Indigo color to match frontend
   });
 
-  const finalY = (doc as Record<string, any>).lastAutoTable.finalY || 90;
+  const finalY = (doc as any).lastAutoTable.finalY || 90;
 
   // Financial Summary
   doc.text(`Subtotal: ${data.currency} ${data.subtotal.toFixed(2)}`, 140, finalY + 10);

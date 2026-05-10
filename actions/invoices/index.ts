@@ -25,9 +25,9 @@ export async function createInvoice(orderId: string, customerId: string) {
   let subtotal = 0;
   let taxAmount = 0;
   const items = order.order_items.map((item: Record<string, any>) => {
-    const unitPrice = item.price;
-    const qty = item.quantity;
-    const taxPercentage = item.product.tax_rate || 18; // Default 18% GST
+    const unitPrice = item.price || 0;
+    const qty = item.quantity || 1;
+    const taxPercentage = item.product?.tax_rate || 18; // Default 18% GST
     
     const itemSubtotal = unitPrice * qty;
     const itemTax = itemSubtotal * (taxPercentage / 100);
@@ -38,7 +38,7 @@ export async function createInvoice(orderId: string, customerId: string) {
 
     return {
       product_id: item.product_id,
-      product_name: item.product.name,
+      product_name: item.product?.name || 'Unknown Product',
       quantity: qty,
       unit_price: unitPrice,
       tax_percentage: taxPercentage,
